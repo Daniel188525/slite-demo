@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://schema.alipay.com/sofa/schema/slite"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://schema.alipay.com/sofa/schema/slite http://schema.alipay.com/sofa/slite.xsd">
+
+    <import resource="classpath*:META-INF/sofa-beans-api.xml"/>
+    
+    <sofa:reference interface="com.ebao.slite.service.rpc.SampleService" id="sampleService" unique-id="testId">
+        <sofa:binding.tr>
+            <!-- used to wait for confreg server pushes the server list-->
+            <!-- the time unit is milliseconds here -->
+            <sofa:global-attrs address-wait-time="5000" />
+            <sofa:route target-url="localhost:12200"/>
+        </sofa:binding.tr>
+    </sofa:reference>
+</beans>

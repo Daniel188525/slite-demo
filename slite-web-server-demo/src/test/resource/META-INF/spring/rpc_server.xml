@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://schema.alipay.com/sofa/schema/slite"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       		http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://schema.alipay.com/sofa/schema/slite 
+            http://schema.alipay.com/sofa/slite.xsd ">
+
+    <import resource="classpath*:META-INF/sofa-beans-api.xml"/>
+    
+    <!-- 声明服务 -->
+    <bean id="sampleService" class="com.ebao.slite.service.rpc.impl.SampleServiceImpl"/>
+
+    <!-- Publish tr service -->
+    <sofa:service interface="com.ebao.slite.service.rpc.SampleService"
+                  ref="sampleService" unique-id="testId">
+        <sofa:binding.tr>
+        </sofa:binding.tr>
+    </sofa:service>
+</beans>
